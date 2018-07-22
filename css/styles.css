@@ -129,6 +129,12 @@ nav h1 a {
     text-decoration: underline;
 }
 
+#breadcrumb a[aria-current="page"],
+#breadcrumb a[aria-current="page"]:hover {
+    color: initial;
+    text-decoration: initial;
+}
+
 /* tablet and up */
 @media (min-width: 768px) {
     #breadcrumb {
@@ -229,7 +235,7 @@ nav h1 a {
     min-height: 96px;
 }
 
-#restaurants-list li h1 {
+#restaurants-list li h3 {
     color: #f18200;
     font-family: Arial,sans-serif;
     font-size: 14pt;
