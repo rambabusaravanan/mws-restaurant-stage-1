@@ -162,8 +162,8 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
-  image.alt = restaurant.name;
-  image.title = restaurant.name;
+  image.alt = "Photo extract of " + restaurant.name + "'s Restaurant";
+  image.title = "Photo extract of " + restaurant.name + "'s Restaurant";
   li.append(image);
 
   const content = document.createElement('div');
@@ -185,6 +185,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
+  more.setAttribute('aria-label', 'open ' + restaurant.name)
   li.append(more)
 
   return li

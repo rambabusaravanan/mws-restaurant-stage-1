@@ -30,6 +30,7 @@ initMap = () => {
         id: 'mapbox.streets'
       }).addTo(newMap);
       fillBreadcrumb();
+      updateMapLabel(restaurant.name);
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
     }
   });
@@ -88,8 +89,8 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img';
-  image.alt = restaurant.name;
-  image.title = restaurant.name;
+  image.alt = "Photo extract of " + restaurant.name + "'s Restaurant";
+  image.title = "Photo extract of " + restaurant.name + "'s Restaurant";
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -184,13 +185,19 @@ createReviewHTML = (review) => {
  */
 fillBreadcrumb = (restaurant = self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
+  const ul = breadcrumb.getElementsByTagName('ul')[0];
   const a = document.createElement('a');
   a.setAttribute('aria-current', 'page');
   a.setAttribute('href', window.location);
   a.innerHTML = restaurant.name;
   const li = document.createElement('li');
   li.appendChild(a);
-  breadcrumb.appendChild(li);
+  ul.appendChild(li);
+}
+
+updateMapLabel = (name) => {
+  const map = document.getElementById('map');
+  map.setAttribute('aria-label', 'map location of ' + name)
 }
 
 /**
